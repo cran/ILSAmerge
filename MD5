@@ -1,0 +1,15 @@
+6ba912ce47ce516d3a5f05f29a97f5f0 *DESCRIPTION
+30e3291ee24e7138b065678bcd9874fb *NAMESPACE
+551ab002bb11059414c2d660fa48e1cd *NEWS.md
+677057e3735f24f3ca5957dce4ba882c *R/ILSAdownload.R
+1c00ffd5eb246df6481958006326d848 *R/ILSAfile.info.R
+41062dadb260a04eed92b16298c7a2ad *R/ILSAmerge.R
+afacd81b5ccb5b23c6f48548169c4e90 *R/justload.R
+ad1165154c57b0a98d6769faf451e942 *R/spss.syntax.R
+4cdd7a1f44197238206f30a6f70122da *README.md
+be2162541bf4a6b661b11fe5d2f27d6b *man/ILSAdownload.Rd
+ab69ee63d3e84eea81f191d7c9aaa585 *man/ILSAfile.info.Rd
+efd0f4f8e003e3ace335772262b18981 *man/ILSAmerge.Rd
+88051d77f4f9e971d91609b335ae9aa3 *man/figures/logo.png
+66fe1efb477505de12093aa1799b1617 *man/justload.Rd
+ba553c48d13846f2f3aa6bf09c82d198 *man/spss.syntax.Rd
