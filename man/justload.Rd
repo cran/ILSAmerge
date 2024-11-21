@@ -4,7 +4,12 @@
 \alias{justload}
 \title{Loading ILSA data into a list}
 \usage{
-justload(inputdir, population, justattributes = FALSE)
+justload(
+  inputdir = getwd(),
+  population,
+  justattributes = FALSE,
+  addcountries = FALSE
+)
 }
 \arguments{
 \item{inputdir}{a string indicating the path were ILSA 'SPSS' files are stored.}
@@ -15,6 +20,13 @@ For more information on available populations, run \code{ILSAfile.info()} first.
 \item{justattributes}{a logical value indicating if 0 rows should be loaded.
 This can be used when we just need to check column attributes. Default is 
 \code{FALSE}.}
+
+\item{addcountries}{a logical value indicating if country information should
+be added to the elements of the list. This means adding the variable \code{CNTRY}
+where needed and adding labels for \code{IDCNTRY} where needed. If \code{FALSE}
+(the default), data will be loaded as is.
+Country information will be retrieved from 'GitHub' if possible. If not, it will
+use the package internal data.}
 }
 \value{
 A list of tibbles.
@@ -22,21 +34,19 @@ A list of tibbles.
 \description{
 Load 'SPSS' data from different International Large-Scale Assessments (ILSA),
 including: 'TIMSS', 'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII',
-and 'SITES' into a list.
+and 'SITES' (2006) into a list.
 }
 \examples{
-# For example, after downloading 'RLII' 1991 G4 data:
-
-# Downloading 'RLII' 1991 and unzipping files
-ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
-
 # Path were raw 'SPSS' files are
-input <- file.path(tempdir(),"RLII1991_IDB_SPSS/Data")
+input <- system.file("extdata/reds", package = "ILSAmerge")
 
 # Load only attributes
-emptylist <- justload(inputdir = input, population = "ASCt1", justattributes = TRUE)
+emptylist <- justload(inputdir = input, population = "BCGV1", justattributes = TRUE)
 
 # Load complete data
-fullist <- justload(inputdir = input, population = "ASCt1", justattributes = FALSE)
+fullist <- justload(inputdir = input, population = "BCGV1", justattributes = FALSE)
+
+# Load complete data and add country labels
+withcou <- justload(inputdir = input, population = "BCGV1", addcountries = TRUE)
 
 }

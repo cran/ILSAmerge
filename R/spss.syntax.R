@@ -16,28 +16,27 @@
 #' desired files.
 #'
 #' @examples
-#'
-#' # For example, after downloading 'RLII' 1991 G4 data:
-#'
-#' # Downloading 'RLII' 1991 and unzipping files
-#' ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
-#'
 #' # Path were raw 'SPSS' files are
-#' input <- file.path(tempdir(),"RLII1991_IDB_SPSS/Data")
-#'
+#' input <- system.file("extdata/reds", package = "ILSAmerge")
+#' 
 #' # Path were merged files will be saved
-#' output <- tempdir()
-#'
-#' # List of ASCt1 files to be merged
-#' files <- list.files(path = input, pattern = "ASC.+t1")
-#'
+#' dir.create(file.path(tempdir(),"spsssyntax"))
+#' output <- file.path(tempdir(),"spsssyntax")
+#' 
+#' # List of BCGV1 files to be merged
+#' files <- list.files(path = input, pattern = "BCG.+V1|bcg.+v1")
+#' 
 #' # Create 'SPSS' syntax
-#' spss.syntax(filelist = files, name = "ASCt1", outputdir = output, zsav = TRUE)
+#' spss.syntax(filelist = files, name = "BCGV1", outputdir = output, zsav = TRUE)
 #'
 #' @export
 
 
-spss.syntax <- function(filelist, name, outputdir, zsav = TRUE, SPSSlimit = 50){
+
+
+
+
+spss.syntax <- function(filelist, name, outputdir = getwd(), zsav = TRUE, SPSSlimit = 50){
 
 
   # Checks ----
@@ -51,10 +50,11 @@ spss.syntax <- function(filelist, name, outputdir, zsav = TRUE, SPSSlimit = 50){
     stop(c("\nInvalid input for 'name'.",
            "\nIt should be a character vector."),call. = FALSE)
 
-  if(!(is.vector(outputdir)&&is.character(outputdir)))
+  ## outputdir
+  if(!(is.vector(outputdir)&&is.character(outputdir)&&length(outputdir)==1))
     stop(c("\nInvalid input for 'outputdir'.",
-           "\nIt should be a character vector."),call. = FALSE)
-
+           "\nIt should be a string."),call. = FALSE)
+  
   if(!file.exists(outputdir))
     stop(c("\nInvalid input for 'outputdir'.",
            "\nPath does not exist."),call. = FALSE)

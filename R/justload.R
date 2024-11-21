@@ -2,7 +2,7 @@
 #'
 #' Load 'SPSS' data from different International Large-Scale Assessments (ILSA),
 #' including: 'TIMSS', 'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII',
-#' and 'SITES' into a list.
+#' and 'SITES' (2006) into a list.
 #'
 #' @param inputdir a string indicating the path were ILSA 'SPSS' files are stored.
 #' @param population a character value indicating which files should be merged. 
@@ -10,29 +10,34 @@
 #' @param justattributes a logical value indicating if 0 rows should be loaded.
 #' This can be used when we just need to check column attributes. Default is 
 #' \code{FALSE}.
+#' @param addcountries a logical value indicating if country information should
+#' be added to the elements of the list. This means adding the variable \code{CNTRY}
+#' where needed and adding labels for \code{IDCNTRY} where needed. If \code{FALSE}
+#' (the default), data will be loaded as is.
+#' Country information will be retrieved from 'GitHub' if possible. If not, it will
+#' use the package internal data.
 #'
 #' @returns A list of tibbles.
 #'
 #' @examples
-#' # For example, after downloading 'RLII' 1991 G4 data:
-#'
-#' # Downloading 'RLII' 1991 and unzipping files
-#' ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
-#'
 #' # Path were raw 'SPSS' files are
-#' input <- file.path(tempdir(),"RLII1991_IDB_SPSS/Data")
+#' input <- system.file("extdata/reds", package = "ILSAmerge")
 #' 
 #' # Load only attributes
-#' emptylist <- justload(inputdir = input, population = "ASCt1", justattributes = TRUE)
+#' emptylist <- justload(inputdir = input, population = "BCGV1", justattributes = TRUE)
 #' 
 #' # Load complete data
-#' fullist <- justload(inputdir = input, population = "ASCt1", justattributes = FALSE)
+#' fullist <- justload(inputdir = input, population = "BCGV1", justattributes = FALSE)
+#' 
+#' # Load complete data and add country labels
+#' withcou <- justload(inputdir = input, population = "BCGV1", addcountries = TRUE)
 #'
 #' @export
 
 
 
-justload <- function(inputdir, population, justattributes = FALSE){
+justload <- function(inputdir = getwd(), population, justattributes = FALSE,
+                     addcountries = FALSE){
   
   # Example & Test ----
   
@@ -44,9 +49,10 @@ justload <- function(inputdir, population, justattributes = FALSE){
   
   # Checks ----
   
-  if(!(is.vector(inputdir)&&is.character(inputdir)))
+  ## inputdir
+  if(!(is.vector(inputdir)&&is.character(inputdir)&&length(inputdir)==1))
     stop(c("\nInvalid input for 'inputdir'.",
-           "\nIt should be a character vector."),call. = FALSE)
+           "\nIt should be a string."),call. = FALSE)
   
   if(!file.exists(inputdir))
     stop(c("\nInvalid input for 'inputdir'.",
@@ -75,7 +81,7 @@ justload <- function(inputdir, population, justattributes = FALSE){
   ext <- unlist(lapply(ext,function(i) i[[2]]))
   
   
-  popstu <- paste0(pop,stu)
+  popstu <- toupper(paste0(pop,stu))
   upopstu <- unique(popstu)
   
   
@@ -94,6 +100,31 @@ justload <- function(inputdir, population, justattributes = FALSE){
   
   erki <- erk[popstu%in%upopstu]
   
+  if(addcountries){
+    where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAcou.csv"
+    
+    
+    where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
+    
+    if("try-error"%in%class(where)){
+      warning(paste0("Could not read country information from 'GitHub'.",
+                     "\nInternal data will be used for adding country labels.",
+                     "\nPlease be aware, these data may not be the lastest one."),call. = FALSE)
+      
+      ILSAcou <- utils::read.csv(file.path(system.file("extdata/ilsainfo", package = "ILSAmerge"),"ILSAcou.csv"))
+    }else{
+      ILSAcou <- where
+    }
+    
+    
+    ILSAcou <- ILSAcou[ILSAcou$N3code!=0,]
+    couL <- ILSAcou$IEAcode
+    names(couL) <- ILSAcou$Name
+    couLS <- sort(couL[ILSAcou$toLabel%in%1])
+    couL <- sort(couL)
+  }
+  
+  
   out <- lapply(1:length(erki),function(j){
     
     outj <- try(haven::read_spss(file = erki[j], user_na = TRUE, col_select = NULL,
@@ -106,6 +137,33 @@ justload <- function(inputdir, population, justattributes = FALSE){
                               .name_repair = "unique",
                               encoding = 'latin1')
     }
+    
+    
+    if(addcountries){
+      
+  
+      
+      
+      
+      # add labels to IDCNTRY
+      attr(outj$IDCNTRY,'labels') <- couLS
+      
+      # Add country string
+      if(!"IDCNTRY_STR"%in%colnames(outj)){
+        cl <- class(outj)
+        outj <- cbind(IDCNTRY_STR = names(couL)[match(as.numeric(outj$IDCNTRY),couL)], outj)
+        class(outj) <- cl
+      }
+      
+      if(!"CNTRY"%in%colnames(outj)){
+        cl <- class(outj)
+        outj <- cbind(CNTRY = toupper(cou[j])[!justattributes], outj)
+        class(outj) <- cl
+      }
+      
+    }
+    
+    
     
     outj
   })
