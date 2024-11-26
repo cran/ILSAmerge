@@ -19,6 +19,9 @@ ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"),
           outputdir = tempdir(), 
           filetype = c("rds", "zsav", "sav"))
 
+## ----echo=FALSE, include = FALSE----------------------------------------------
+unlink(file.path(tempdir(),"combineStudents"),recursive = TRUE)
+
 ## -----------------------------------------------------------------------------
 # Path were raw 'SPSS' files are
 input <- system.file("extdata/timssadv", package = "ILSAmerge")
@@ -51,4 +54,7 @@ addSchools(inputdir = output, outputdir = output)
 
 # Check file names
 list.files(output,pattern = ".rds")
+
+## ----echo=FALSE, include = FALSE----------------------------------------------
+unlink(file.path(tempdir(),"combineStudents"),recursive = TRUE)
 

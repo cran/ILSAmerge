@@ -6,6 +6,9 @@ knitr::opts_chunk$set(
 ## ----setup, echo=FALSE--------------------------------------------------------
 library(ILSAmerge)
 
+## ----echo=FALSE---------------------------------------------------------------
+unlink(file.path(tempdir(),"REDS2021"),recursive = TRUE)
+
 ## ----eval=TRUE----------------------------------------------------------------
 dir.create(file.path(tempdir(),"REDS2021"),showWarnings = FALSE)
 
@@ -20,4 +23,7 @@ list.files(file.path(tempdir(),"REDS2021"))
 ILSArename(inputdir = file.path(tempdir(),"REDS2021"))
 list.files(file.path(tempdir(),"REDS2021"))
 
+
+## ----echo=FALSE---------------------------------------------------------------
+unlink(file.path(tempdir(),"REDS2021"),recursive = TRUE)
 
