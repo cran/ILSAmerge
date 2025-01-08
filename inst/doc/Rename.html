@@ -345,20 +345,20 @@ respondents, and cycles. To make this codes comprehensible, we can use
 <code>ILSArename()</code> to give new names to merged files.</p>
 <p>First, we need to use <code>ILSAmerge()</code> to merge the
 files:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;REDS2021&quot;</span>),<span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">ILSAmerge</span>(<span class="at">inputdir =</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/reds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>), </span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>          <span class="at">outputdir =</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;REDS2021&quot;</span>), </span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>          <span class="at">filetype =</span> <span class="fu">c</span>(<span class="st">&quot;rds&quot;</span>, <span class="st">&quot;zsav&quot;</span>, <span class="st">&quot;sav&quot;</span>),<span class="at">quiet =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;REDS2021&quot;</span>),<span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ILSAmerge</span>(<span class="at">inputdir =</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/reds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>), </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">outputdir =</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;REDS2021&quot;</span>), </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">filetype =</span> <span class="fu">c</span>(<span class="st">&quot;rds&quot;</span>, <span class="st">&quot;zsav&quot;</span>, <span class="st">&quot;sav&quot;</span>),<span class="at">quiet =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>This will create 3 files with codes for respondent and cycle:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">list.files</span>(<span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;REDS2021&quot;</span>))</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="do">## [1] &quot;BCGV1.rds&quot; &quot;BSGV1.rds&quot; &quot;BTGV1.rds&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;REDS2021&quot;</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;BCGV1.rds&quot; &quot;BSGV1.rds&quot; &quot;BTGV1.rds&quot;</span></span></code></pre></div>
 <p>With <code>ILSArename()</code> we can convert these names:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">ILSArename</span>(<span class="at">inputdir =</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;REDS2021&quot;</span>))</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="do">## 3  ILSAmerge() file(s) found.</span></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="do">## 3  ILSAmerge() file(s) renamed.</span></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="fu">list.files</span>(<span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;REDS2021&quot;</span>))</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="do">## [1] &quot;REDS_2021_school.rds&quot;  &quot;REDS_2021_student.rds&quot; &quot;REDS_2021_teacher.rds&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ILSArename</span>(<span class="at">inputdir =</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;REDS2021&quot;</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  ILSAmerge() file(s) found.</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  ILSAmerge() file(s) renamed.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;REDS2021&quot;</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;REDS_2021_school.rds&quot;  &quot;REDS_2021_student.rds&quot; &quot;REDS_2021_teacher.rds&quot;</span></span></code></pre></div>
 
 
 

@@ -34,6 +34,7 @@
 #' shown. Default is \code{FALSE}.
 #'
 #' @returns Saves merged ILSA data or \code{.sps} syntax for merging ILSA data.
+#' 
 #'
 #' @examples
 #' # Path where raw 'SPSS' files are
@@ -188,9 +189,10 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
   
   
   ILSAcou <- ILSAcou[ILSAcou$N3code!=0,]
-  couL <- ILSAcou$IEAcode
+  ILSAcou <- ILSAcou[order(ILSAcou$Name),]
+  couL <- as.numeric(ILSAcou$IEAcode)
   names(couL) <- ILSAcou$Name
-  couLS <- sort(couL[ILSAcou$toLabel%in%1])
+  couLS <- (couL[ILSAcou$toLabel%in%1])
   couL <- sort(couL)
   
 
@@ -221,6 +223,18 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
       }else{
         out <- .mergebymatrix(files = erki,verbose = !quiet, couL = couL, couLS = couLS)
       }
+      
+      # Fix IDCNTRY
+      nav <- attr(out$IDCNTRY,"na_values")
+      lbl <- attr(out$IDCNTRY,"labels")
+      vlb <- attr(out$IDCNTRY,"label")
+      attr(out$IDCNTRY,"format.spss") <- paste0("F",max(nchar(c(nav,lbl,couLS))),".0")
+      attr(out$IDCNTRY,"labels") <- c(couLS,lbl)
+      
+      adcl <- c("haven_labelled_spss","haven_labelled","vctrs_vctr")
+      clid <- class(out$IDCNTRY)
+      class(out$IDCNTRY) <- c(setdiff(adcl,clid),clid)
+
 
       if(filetype%in%"zsav"){
         haven::write_sav(data = out,compress = "zsav",
@@ -313,7 +327,7 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
     out1 <- haven::read_sav(file = files[whtoload], user_na = TRUE, col_select = NULL,
                             skip = 0, n_max = 0, .name_repair = "unique",
                             encoding = 'latin1')
-    
+
 
   }
   colnames(out1) <- toupper(colnames(out1))
@@ -338,15 +352,13 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
     nrow(load)
   })
   
-  COU <- substr(basename(files[unlist(last)>0]),4,6)
+  COU <- toupper(substr(basename(files[unlist(last)>0]),4,6))
   COUWD <- last[unlist(last)>0]
   COU <- unlist(lapply(1:length(COU),function(co) rep(COU[co],COUWD[[co]])))
   hasdata <- sapply(last,function(j) j!=0)
   
 
-  # last <- lapply(files[-1],function(j){
-  #   nrow(haven::read_spss(file = j,col_select = 'IDCNTRY'))
-  # })
+
 
   last <- cumsum(unlist(last))
   first <- c(1,(last+1))[-(length(last)+1)]
@@ -428,9 +440,25 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
     
   }
   
+  # convert to numeric
+  
   out <- as.data.frame(out)
+  # out=dd
+  whnum <- unlist(lapply(atrs,function(i){
+    "double"%in%i$class
+  }))
+  whnum <- which(whnum)
+  for(j in whnum){
+    newvar <- suppressWarnings(as.double(out[,j]))
+    if(all(is.na(newvar)==is.na(out[,j]))){
+      out[,j] <- newvar
+    }
+    
+  }
+
   
   # REPAIR attributes
+  
   
     class(out) <- class(out1)
     for(h in 1:ncol(out)){
@@ -441,18 +469,7 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
   
   
   
-  # out <- rbind(out1,out)[-1,]
-  
 
-  
-  # add labels to IDCNTRY
-  
-  # if(is.character(out$IDCNTRY)){
-  #   out$IDCNTRY <- as.numeric(out$IDCNTRY)
-  # }
-  attr(out$IDCNTRY,'labels') <- couLS
-
-  
   # Add country string
   if(!"IDCNTRY_STR"%in%colnames(out)){
     cl <- class(out)
@@ -493,7 +510,8 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
     
     
     # add labels to IDCNTRY
-    attr(outj$IDCNTRY,'labels') <- couLS
+    # attr(outj$IDCNTRY,'labels') <- as.numeric(couLS)
+    # attr(outj$IDCNTRY,"format.spss") <- paste0("F",max(nchar(attr(out$IDCNTRY,"na_values")),4),".0")
     
     # Add country string
     if(!"IDCNTRY_STR"%in%colnames(outj)){
@@ -504,7 +522,7 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
     
     if(!"CNTRY"%in%colnames(outj)){
       cl <- class(outj)
-      outj <- cbind(CNTRY = cous[j], outj)
+      outj <- cbind(CNTRY = toupper(cous[j]), outj)
       class(outj) <- cl
     }
     

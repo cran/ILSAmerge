@@ -21,8 +21,7 @@ straightforward as possible.
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/ILSAmerge)](https://CRAN.R-project.org/package=ILSAmerge)
-![GitHub R package
-version](https://img.shields.io/github/r-package/v/dopatendo/ILSAmerge)
+[![](https://img.shields.io/github/r-package/v/dopatendo/ILSAmerge)](https://github.com/dopatendo/ILSAmerge)
 [![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 ![Static
 Badge](https://img.shields.io/badge/dependencies-haven-brightgreen)
@@ -69,7 +68,7 @@ For merging ILSA data, we can use `ILSAmerge()`. For an example see
 For rename ILSA data, we can use `ILSArename()`. For an example see
 `vignette("Rename")`.
 
-## Rename files
+## Download, merge and combine in one step
 
-We can combine all these steps using `ILSAready()`. For an example see
-`vignette("Onestep")`.
+We can also combine all the steps for preparing ILSA data (downloading, merging,
+combining respondents, and renaming) using `ILSAready()`.

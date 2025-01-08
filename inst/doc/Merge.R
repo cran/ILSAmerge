@@ -10,9 +10,9 @@ library(ILSAmerge)
 ILSAfile.info(inputdir = system.file("extdata/reds", package = "ILSAmerge"))
 
 ## ----eval=FALSE---------------------------------------------------------------
-# ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"),
-#           outputdir = tempdir(),
-#           filetype = c("rds", "zsav", "sav"))
+#  ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"),
+#            outputdir = tempdir(),
+#            filetype = c("rds", "zsav", "sav"))
 
 ## ----eval=TRUE----------------------------------------------------------------
 ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"), 

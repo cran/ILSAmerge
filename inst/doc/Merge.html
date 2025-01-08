@@ -345,18 +345,18 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <p>As an example, we can use the data of ‘REDS’ 2021 provided by the
 package.</p>
 <p>In the case of ‘REDS’ 2021, we have 12 files and 3 populations:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">ILSAfile.info</span>(<span class="at">inputdir =</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/reds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>))</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="do">##   Population Files  MB</span></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="do">## 1      BCGV1     4 0.3</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="do">## 2      BSGV1     4 0.4</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="do">## 3      BTGV1     4 0.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ILSAfile.info</span>(<span class="at">inputdir =</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/reds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   Population Files  MB</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      BCGV1     4 0.3</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      BSGV1     4 0.4</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      BTGV1     4 0.3</span></span></code></pre></div>
 <p>With <code>ILSAmerge()</code> we can combine all the files into the
 number of populations we have.</p>
 <p>The default type will be an “rds”, but also we can make “zsav” and
 “sav” files:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">ILSAmerge</span>(<span class="at">inputdir =</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/reds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>), </span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>          <span class="at">outputdir =</span> <span class="fu">tempdir</span>(), </span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>          <span class="at">filetype =</span> <span class="fu">c</span>(<span class="st">&quot;rds&quot;</span>, <span class="st">&quot;zsav&quot;</span>, <span class="st">&quot;sav&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ILSAmerge</span>(<span class="at">inputdir =</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/reds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>), </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">outputdir =</span> <span class="fu">tempdir</span>(), </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">filetype =</span> <span class="fu">c</span>(<span class="st">&quot;rds&quot;</span>, <span class="st">&quot;zsav&quot;</span>, <span class="st">&quot;sav&quot;</span>))</span></code></pre></div>
 </div>
 <div id="adjust-merge-options" class="section level2">
 <h2>Adjust merge options</h2>
@@ -389,29 +389,29 @@ files per command.</li>
 <h2>Progress and time for merging</h2>
 <p>When <code>ILSAmerge()</code> runs, information about the progress of
 the merging and the running time will be produced:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">ILSAmerge</span>(<span class="at">inputdir =</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/reds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>), </span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>          <span class="at">outputdir =</span> <span class="fu">tempdir</span>(), </span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>          <span class="at">filetype =</span> <span class="fu">c</span>(<span class="st">&quot;rds&quot;</span>, <span class="st">&quot;zsav&quot;</span>, <span class="st">&quot;sav&quot;</span>))</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="do">## 12 files detected. Merging into 3 files.</span></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="do">## Merging BCGV1. Type 1 of 3.</span></span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="do">## Merging dataset 1 of 4.</span></span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="do">## Merging dataset 2 of 4.</span></span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="do">## Merging dataset 3 of 4.</span></span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="do">## Merging dataset 4 of 4.</span></span>
-<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="do">## Merging BCGV1 took 0 seconds or 0 minutes.</span></span>
-<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="do">## Merging BSGV1. Type 2 of 3.</span></span>
-<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="do">## Merging dataset 1 of 4.</span></span>
-<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="do">## Merging dataset 2 of 4.</span></span>
-<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="do">## Merging dataset 3 of 4.</span></span>
-<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="do">## Merging dataset 4 of 4.</span></span>
-<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="do">## Merging BSGV1 took 0 seconds or 0 minutes.</span></span>
-<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="do">## Merging BTGV1. Type 3 of 3.</span></span>
-<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="do">## Merging dataset 1 of 4.</span></span>
-<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="do">## Merging dataset 2 of 4.</span></span>
-<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="do">## Merging dataset 3 of 4.</span></span>
-<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="do">## Merging dataset 4 of 4.</span></span>
-<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a><span class="do">## Merging BTGV1 took 0 seconds or 0 minutes.</span></span>
-<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a><span class="do">## Merging took 0 seconds or 0 minutes.</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ILSAmerge</span>(<span class="at">inputdir =</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/reds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>), </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">outputdir =</span> <span class="fu">tempdir</span>(), </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">filetype =</span> <span class="fu">c</span>(<span class="st">&quot;rds&quot;</span>, <span class="st">&quot;zsav&quot;</span>, <span class="st">&quot;sav&quot;</span>))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 12 files detected. Merging into 3 files.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging BCGV1. Type 1 of 3.</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 1 of 4.</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 2 of 4.</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 3 of 4.</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 4 of 4.</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging BCGV1 took 0 seconds or 0 minutes.</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging BSGV1. Type 2 of 3.</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 1 of 4.</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 2 of 4.</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 3 of 4.</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 4 of 4.</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging BSGV1 took 0 seconds or 0 minutes.</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging BTGV1. Type 3 of 3.</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 1 of 4.</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 2 of 4.</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 3 of 4.</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 4 of 4.</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging BTGV1 took 0 seconds or 0 minutes.</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging took 0 seconds or 0 minutes.</span></span></code></pre></div>
 </div>
 <div id="merging-between-respondents" class="section level2">
 <h2>Merging between respondents</h2>
@@ -424,39 +424,39 @@ same or different respondents.</p>
 <p><code>combineStudents()</code> combines multiple student files, e.g.,
 achievement and background questionnaires, using ‘TIMSS’ Advanced
 1995:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Path were raw &#39;SPSS&#39; files are</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/timssadv&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># Path were merged files will be saved</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;combineStudents&quot;</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;combineStudents&quot;</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co"># Merging &#39;TIMSS&#39; Advanced 1995, as .rds file</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="fu">ILSAmerge</span>(<span class="at">inputdir =</span> input, <span class="at">outputdir =</span> output, <span class="at">filetype =</span> <span class="st">&quot;rds&quot;</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co"># Rename files</span></span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="fu">ILSArename</span>(output)</span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="do">## 3  ILSAmerge() file(s) found.</span></span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="do">## 3  ILSAmerge() file(s) renamed.</span></span>
-<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co"># Check file names</span></span>
-<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="fu">list.files</span>(output,<span class="at">pattern =</span> <span class="st">&quot;.rds&quot;</span>)</span>
-<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="do">## [1] &quot;TIMSSADVANCED_Math_1995_school.rds&quot;             </span></span>
-<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="do">## [2] &quot;TIMSSADVANCED_Math_1995_student_achievement.rds&quot;</span></span>
-<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="do">## [3] &quot;TIMSSADVANCED_Math_1995_student_background.rds&quot;</span></span>
-<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a></span>
-<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a><span class="co"># Combine student files</span></span>
-<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="fu">combineStudents</span>(<span class="at">inputdir =</span> output, <span class="at">outputdir =</span> output)</span>
-<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a><span class="do">## 2  ILSAmerge()/ILSArename() student file(s) found. Combining into 1 file(s).</span></span>
-<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a><span class="do">## Combining student 1 of 1.</span></span>
-<span id="cb4-26"><a href="#cb4-26" tabindex="-1"></a><span class="do">## Combining students took 0 seconds or 0 minutes.</span></span>
-<span id="cb4-27"><a href="#cb4-27" tabindex="-1"></a></span>
-<span id="cb4-28"><a href="#cb4-28" tabindex="-1"></a><span class="co"># Check file names</span></span>
-<span id="cb4-29"><a href="#cb4-29" tabindex="-1"></a><span class="fu">list.files</span>(output,<span class="at">pattern =</span> <span class="st">&quot;.rds&quot;</span>)</span>
-<span id="cb4-30"><a href="#cb4-30" tabindex="-1"></a><span class="do">## [1] &quot;TIMSSADVANCED_Math_1995_school.rds&quot;             </span></span>
-<span id="cb4-31"><a href="#cb4-31" tabindex="-1"></a><span class="do">## [2] &quot;TIMSSADVANCED_Math_1995_student.rds&quot;            </span></span>
-<span id="cb4-32"><a href="#cb4-32" tabindex="-1"></a><span class="do">## [3] &quot;TIMSSADVANCED_Math_1995_student_achievement.rds&quot;</span></span>
-<span id="cb4-33"><a href="#cb4-33" tabindex="-1"></a><span class="do">## [4] &quot;TIMSSADVANCED_Math_1995_student_background.rds&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Path were raw &#39;SPSS&#39; files are</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/timssadv&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Path were merged files will be saved</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;combineStudents&quot;</span>))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;combineStudents&quot;</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Merging &#39;TIMSS&#39; Advanced 1995, as .rds file</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ILSAmerge</span>(<span class="at">inputdir =</span> input, <span class="at">outputdir =</span> output, <span class="at">filetype =</span> <span class="st">&quot;rds&quot;</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename files</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ILSArename</span>(output)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  ILSAmerge() file(s) found.</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  ILSAmerge() file(s) renamed.</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Check file names</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(output,<span class="at">pattern =</span> <span class="st">&quot;.rds&quot;</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;TIMSSADVANCED_Math_1995_school.rds&quot;             </span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [2] &quot;TIMSSADVANCED_Math_1995_student_achievement.rds&quot;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] &quot;TIMSSADVANCED_Math_1995_student_background.rds&quot;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine student files</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">combineStudents</span>(<span class="at">inputdir =</span> output, <span class="at">outputdir =</span> output)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  ILSAmerge()/ILSArename() student file(s) found. Combining into 1 file(s).</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Combining student 1 of 1.</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Combining students took 0 seconds or 0 minutes.</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Check file names</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(output,<span class="at">pattern =</span> <span class="st">&quot;.rds&quot;</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;TIMSSADVANCED_Math_1995_school.rds&quot;             </span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="do">## [2] &quot;TIMSSADVANCED_Math_1995_student.rds&quot;            </span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] &quot;TIMSSADVANCED_Math_1995_student_achievement.rds&quot;</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="do">## [4] &quot;TIMSSADVANCED_Math_1995_student_background.rds&quot;</span></span></code></pre></div>
 <p>As we can see, a new file was created combining the achievement and
 the student questionnaire.</p>
 </div>
@@ -464,27 +464,27 @@ the student questionnaire.</p>
 <h3>Combine schools</h3>
 <p><code>addSchools()</code> adds school data to student and teacher
 files, using ‘TIMSS’ Advanced 1995:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Check file names</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">list.files</span>(output,<span class="at">pattern =</span> <span class="st">&quot;.rds&quot;</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="do">## [1] &quot;TIMSSADVANCED_Math_1995_school.rds&quot;             </span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="do">## [2] &quot;TIMSSADVANCED_Math_1995_student.rds&quot;            </span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="do">## [3] &quot;TIMSSADVANCED_Math_1995_student_achievement.rds&quot;</span></span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="do">## [4] &quot;TIMSSADVANCED_Math_1995_student_background.rds&quot;</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co"># Add school data</span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="fu">addSchools</span>(<span class="at">inputdir =</span> output, <span class="at">outputdir =</span> output)</span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="do">## 2  ILSAmerge()/ILSArename() file(s) found. Adding schools to 1 file(s).</span></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="do">## Combined students found for MSAM1.</span></span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="do">## Adding schools to MSAM1, file 1 of 1.</span></span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="do">## Adding schools took 0 seconds or 0 minutes.</span></span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co"># Check file names</span></span>
-<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="fu">list.files</span>(output,<span class="at">pattern =</span> <span class="st">&quot;.rds&quot;</span>)</span>
-<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="do">## [1] &quot;TIMSSADVANCED_Math_1995_school.rds&quot;             </span></span>
-<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="do">## [2] &quot;TIMSSADVANCED_Math_1995_student&amp;school.rds&quot;     </span></span>
-<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="do">## [3] &quot;TIMSSADVANCED_Math_1995_student.rds&quot;            </span></span>
-<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="do">## [4] &quot;TIMSSADVANCED_Math_1995_student_achievement.rds&quot;</span></span>
-<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="do">## [5] &quot;TIMSSADVANCED_Math_1995_student_background.rds&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check file names</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(output,<span class="at">pattern =</span> <span class="st">&quot;.rds&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;TIMSSADVANCED_Math_1995_school.rds&quot;             </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [2] &quot;TIMSSADVANCED_Math_1995_student.rds&quot;            </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] &quot;TIMSSADVANCED_Math_1995_student_achievement.rds&quot;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [4] &quot;TIMSSADVANCED_Math_1995_student_background.rds&quot;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Add school data</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">addSchools</span>(<span class="at">inputdir =</span> output, <span class="at">outputdir =</span> output)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  ILSAmerge()/ILSArename() file(s) found. Adding schools to 1 file(s).</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Combined students found for MSAM1.</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Adding schools to MSAM1, file 1 of 1.</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Adding schools took 0 seconds or 0 minutes.</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Check file names</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(output,<span class="at">pattern =</span> <span class="st">&quot;.rds&quot;</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;TIMSSADVANCED_Math_1995_school.rds&quot;             </span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [2] &quot;TIMSSADVANCED_Math_1995_student&amp;school.rds&quot;     </span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] &quot;TIMSSADVANCED_Math_1995_student.rds&quot;            </span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [4] &quot;TIMSSADVANCED_Math_1995_student_achievement.rds&quot;</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;TIMSSADVANCED_Math_1995_student_background.rds&quot;</span></span></code></pre></div>
 <p>As we can see, a new file was created combining the information of
 students and schools.</p>
 </div>

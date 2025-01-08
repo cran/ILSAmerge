@@ -16,6 +16,7 @@
 #' (the default), data will be loaded as is.
 #' Country information will be retrieved from 'GitHub' if possible. If not, it will
 #' use the package internal data.
+#' 
 #'
 #' @returns A list of tibbles.
 #'
@@ -27,7 +28,7 @@
 #' emptylist <- justload(inputdir = input, population = "BCGV1", justattributes = TRUE)
 #' 
 #' # Load complete data
-#' fullist <- justload(inputdir = input, population = "BCGV1", justattributes = FALSE)
+#' fulllist <- justload(inputdir = input, population = "BCGV1", justattributes = FALSE)
 #' 
 #' # Load complete data and add country labels
 #' withcou <- justload(inputdir = input, population = "BCGV1", addcountries = TRUE)
@@ -125,28 +126,37 @@ justload <- function(inputdir = getwd(), population, justattributes = FALSE,
   }
   
   
-  out <- lapply(1:length(erki),function(j){
+  out <- vector(mode = "list",length = length(erki))
+  
+  for(j in 1:length(erki)){
     
-    outj <- try(haven::read_spss(file = erki[j], user_na = TRUE, col_select = NULL,
-                                 skip = 0, n_max = ifelse(justattributes, 0, Inf),
-                                 .name_repair = "unique"),silent = TRUE)
+    # outj <- try(haven::read_spss(file = erki[j], user_na = TRUE, col_select = NULL,
+    #                              skip = 0, n_max = ifelse(justattributes, 0, Inf),
+    #                              .name_repair = "unique"),silent = TRUE)
+    # 
+    # if("try-error"%in%class(outj)){
+    #   outj <- haven::read_sav(file = erki[j], user_na = TRUE, col_select = NULL,
+    #                           skip = 0, n_max = ifelse(justattributes, 0, Inf),
+    #                           .name_repair = "unique",
+    #                           encoding = 'latin1')
+    # }
     
-    if("try-error"%in%class(outj)){
-      outj <- haven::read_sav(file = erki[j], user_na = TRUE, col_select = NULL,
-                              skip = 0, n_max = ifelse(justattributes, 0, Inf),
-                              .name_repair = "unique",
-                              encoding = 'latin1')
-    }
+    outj <- .readILSA(x = erki[j])
     
     
     if(addcountries){
       
   
+      # Fix IDCNTRY
+      nav <- attr(outj$IDCNTRY,"na_values")
+      lbl <- attr(outj$IDCNTRY,"labels")
+      vlb <- attr(outj$IDCNTRY,"label")
+      attr(outj$IDCNTRY,"format.spss") <- paste0("F",max(nchar(c(nav,lbl,couLS))),".0")
+      attr(outj$IDCNTRY,"labels") <- c(couLS,lbl)
       
       
-      
-      # add labels to IDCNTRY
-      attr(outj$IDCNTRY,'labels') <- couLS
+      # # add labels to IDCNTRY
+      # attr(outj$IDCNTRY,'labels') <- couLS
       
       # Add country string
       if(!"IDCNTRY_STR"%in%colnames(outj)){
@@ -165,8 +175,8 @@ justload <- function(inputdir = getwd(), population, justattributes = FALSE,
     
     
     
-    outj
-  })
+    out[[j]] <- outj
+  }
   
   # Output ----
   

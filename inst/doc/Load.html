@@ -347,69 +347,81 @@ populations within an ILSA.</p>
 <p>Moreover, we can also use this information for loading an specific
 population into the memory. Using the ‘REDS’ 2021 example data provided
 by this package:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">ILSAfile.info</span>(<span class="at">inputdir =</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/reds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="do">##   Population Files  MB</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="do">## 1      BCGV1     4 0.3</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="do">## 2      BSGV1     4 0.4</span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="do">## 3      BTGV1     4 0.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ILSAfile.info</span>(<span class="at">inputdir =</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/reds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Population Files  MB</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      BCGV1     4 0.3</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      BSGV1     4 0.4</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      BTGV1     4 0.3</span></span></code></pre></div>
 </div>
 <div id="load-all-information" class="section level2">
 <h2>Load all information</h2>
 <p>We can decide to load a population, like <code>BCGV1</code>, using
 <code>justload()</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>loaded <span class="ot">&lt;-</span> <span class="fu">justload</span>(<span class="at">inputdir =</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/reds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>),</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>         <span class="at">population =</span> <span class="st">&quot;BCGV1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>loaded <span class="ot">&lt;-</span> <span class="fu">justload</span>(<span class="at">inputdir =</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/reds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>),</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">population =</span> <span class="st">&quot;BCGV1&quot;</span>)</span></code></pre></div>
 <p>This will result in a list of elements loaded by <code>haven</code>,
 in our example, a list of 11 elements:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">class</span>(loaded)</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="do">## [1] &quot;list&quot;</span></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="fu">length</span>(loaded)</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="do">## [1] 4</span></span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>loaded[[<span class="dv">1</span>]]</span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="do">## # A tibble: 10 × 314</span></span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="do">##    IDCNTRY             IDSCHOOL ITLANGC      IP1G00A   IP1G00B      IP1G00C     </span></span>
-<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="do">##    &lt;dbl+lbl&gt;           &lt;dbl+lb&gt; &lt;dbl+lbl&gt;    &lt;dbl+lbl&gt; &lt;dbl+lbl&gt;    &lt;dbl+lbl&gt;   </span></span>
-<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="do">##  1 784 [United Arab E… 1001     53 [Arabic]  2 [Mid]   3 [March]    9 (NA) [Omi…</span></span>
-<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="do">##  2 784 [United Arab E… 1002     53 [Arabic]  1 [Early] 2 [February] 3 [Late]    </span></span>
-<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="do">##  3 784 [United Arab E… 1003     53 [Arabic]  1 [Early] 2 [February] 3 [Late]    </span></span>
-<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="do">##  4 784 [United Arab E… 1004      1 [English] 3 [Late]  2 [February] 3 [Late]    </span></span>
-<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="do">##  5 784 [United Arab E… 1005     53 [Arabic]  1 [Early] 3 [March]    3 [Late]    </span></span>
-<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="do">##  6 784 [United Arab E… 1006     53 [Arabic]  2 [Mid]   2 [February] 2 [Mid]     </span></span>
-<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="do">##  7 784 [United Arab E… 1007     53 [Arabic]  1 [Early] 3 [March]    3 [Late]    </span></span>
-<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="do">##  8 784 [United Arab E… 1008     53 [Arabic]  1 [Early] 3 [March]    2 [Mid]     </span></span>
-<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="do">##  9 784 [United Arab E… 1009     53 [Arabic]  2 [Mid]   3 [March]    1 [Early]   </span></span>
-<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="do">## 10 784 [United Arab E… 1010     53 [Arabic]  2 [Mid]   6 [June]     3 [Late]    </span></span>
-<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="do">## # ℹ 308 more variables: IP1G00D &lt;dbl+lbl&gt;, IP1GIAA &lt;dbl+lbl&gt;,</span></span>
-<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a><span class="do">## #   IP1GIAB &lt;dbl+lbl&gt;, IP1GIAC &lt;dbl+lbl&gt;, IP1GIAD &lt;dbl+lbl&gt;, IP1GIAE &lt;dbl+lbl&gt;,</span></span>
-<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a><span class="do">## #   IP1GIAF &lt;dbl+lbl&gt;, IP1GIAG &lt;dbl+lbl&gt;, IP1GIBA &lt;dbl+lbl&gt;, IP1GIBB &lt;dbl+lbl&gt;,</span></span>
-<span id="cb3-24"><a href="#cb3-24" tabindex="-1"></a><span class="do">## #   IP1GIBC &lt;dbl+lbl&gt;, IP1GIBD &lt;dbl+lbl&gt;, IP1G01A &lt;dbl+lbl&gt;, IP1G01B &lt;dbl+lbl&gt;,</span></span>
-<span id="cb3-25"><a href="#cb3-25" tabindex="-1"></a><span class="do">## #   IP1G01C1 &lt;dbl+lbl&gt;, IP1G01C2 &lt;dbl+lbl&gt;, IP2G01A1 &lt;dbl+lbl&gt;,</span></span>
-<span id="cb3-26"><a href="#cb3-26" tabindex="-1"></a><span class="do">## #   IP1G01AA &lt;dbl+lbl&gt;, IP1G02A &lt;dbl+lbl&gt;, IP1G02B &lt;dbl+lbl&gt;,</span></span>
-<span id="cb3-27"><a href="#cb3-27" tabindex="-1"></a><span class="do">## #   IP1G02C &lt;dbl+lbl&gt;, IP1G02D &lt;dbl+lbl&gt;, IP1G02E &lt;dbl+lbl&gt;, …</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(loaded)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;list&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(loaded)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>loaded[[<span class="dv">1</span>]]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 10 × 314</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="do">##    IDCNTRY             IDSCHOOL ITLANGC      IP1G00A   IP1G00B      IP1G00C     </span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;dbl+lbl&gt;           &lt;dbl+lb&gt; &lt;dbl+lbl&gt;    &lt;dbl+lbl&gt; &lt;dbl+lbl&gt;    &lt;dbl+lbl&gt;   </span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 784 [United Arab E… 1001     53 [Arabic]  2 [Mid]   3 [March]    9 (NA) [Omi…</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 784 [United Arab E… 1002     53 [Arabic]  1 [Early] 2 [February] 3 [Late]    </span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 784 [United Arab E… 1003     53 [Arabic]  1 [Early] 2 [February] 3 [Late]    </span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 784 [United Arab E… 1004      1 [English] 3 [Late]  2 [February] 3 [Late]    </span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 784 [United Arab E… 1005     53 [Arabic]  1 [Early] 3 [March]    3 [Late]    </span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 784 [United Arab E… 1006     53 [Arabic]  2 [Mid]   2 [February] 2 [Mid]     </span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 784 [United Arab E… 1007     53 [Arabic]  1 [Early] 3 [March]    3 [Late]    </span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 784 [United Arab E… 1008     53 [Arabic]  1 [Early] 3 [March]    2 [Mid]     </span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 784 [United Arab E… 1009     53 [Arabic]  2 [Mid]   3 [March]    1 [Early]   </span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 784 [United Arab E… 1010     53 [Arabic]  2 [Mid]   6 [June]     3 [Late]    </span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ 308 more variables: IP1G00D &lt;dbl+lbl&gt;, IP1GIAA &lt;dbl+lbl&gt;,</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="do">## #   IP1GIAB &lt;dbl+lbl&gt;, IP1GIAC &lt;dbl+lbl&gt;, IP1GIAD &lt;dbl+lbl&gt;, IP1GIAE &lt;dbl+lbl&gt;,</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="do">## #   IP1GIAF &lt;dbl+lbl&gt;, IP1GIAG &lt;dbl+lbl&gt;, IP1GIBA &lt;dbl+lbl&gt;, IP1GIBB &lt;dbl+lbl&gt;,</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="do">## #   IP1GIBC &lt;dbl+lbl&gt;, IP1GIBD &lt;dbl+lbl&gt;, IP1G01A &lt;dbl+lbl&gt;, IP1G01B &lt;dbl+lbl&gt;,</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="do">## #   IP1G01C1 &lt;dbl+lbl&gt;, IP1G01C2 &lt;dbl+lbl&gt;, IP2G01A1 &lt;dbl+lbl&gt;,</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="do">## #   IP1G01AA &lt;dbl+lbl&gt;, IP1G02A &lt;dbl+lbl&gt;, IP1G02B &lt;dbl+lbl&gt;,</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="do">## #   IP1G02C &lt;dbl+lbl&gt;, IP1G02D &lt;dbl+lbl&gt;, IP1G02E &lt;dbl+lbl&gt;, …</span></span></code></pre></div>
 </div>
 <div id="load-only-column-information" class="section level2">
 <h2>Load only column information</h2>
 <p>For some purposes, we might need to load only the column information,
 most probably to check if the attributes are correct. We can do this by
 setting <code>justattributes = TRUE</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>loaded <span class="ot">&lt;-</span> <span class="fu">justload</span>(<span class="at">inputdir =</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/reds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>),</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>         <span class="at">population =</span> <span class="st">&quot;BCGV1&quot;</span>, <span class="at">justattributes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>loaded <span class="ot">&lt;-</span> <span class="fu">justload</span>(<span class="at">inputdir =</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/reds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>),</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">population =</span> <span class="st">&quot;BCGV1&quot;</span>, <span class="at">justattributes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>This will load all 11 datasets with 0 rows each:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">length</span>(loaded)</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="do">## [1] 4</span></span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>loaded[[<span class="dv">1</span>]]</span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="do">## # A tibble: 0 × 314</span></span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="do">## # ℹ 314 variables: IDCNTRY &lt;dbl+lbl&gt;, IDSCHOOL &lt;dbl+lbl&gt;, ITLANGC &lt;dbl+lbl&gt;,</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="do">## #   IP1G00A &lt;dbl+lbl&gt;, IP1G00B &lt;dbl+lbl&gt;, IP1G00C &lt;dbl+lbl&gt;, IP1G00D &lt;dbl+lbl&gt;,</span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="do">## #   IP1GIAA &lt;dbl+lbl&gt;, IP1GIAB &lt;dbl+lbl&gt;, IP1GIAC &lt;dbl+lbl&gt;, IP1GIAD &lt;dbl+lbl&gt;,</span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="do">## #   IP1GIAE &lt;dbl+lbl&gt;, IP1GIAF &lt;dbl+lbl&gt;, IP1GIAG &lt;dbl+lbl&gt;, IP1GIBA &lt;dbl+lbl&gt;,</span></span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="do">## #   IP1GIBB &lt;dbl+lbl&gt;, IP1GIBC &lt;dbl+lbl&gt;, IP1GIBD &lt;dbl+lbl&gt;, IP1G01A &lt;dbl+lbl&gt;,</span></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="do">## #   IP1G01B &lt;dbl+lbl&gt;, IP1G01C1 &lt;dbl+lbl&gt;, IP1G01C2 &lt;dbl+lbl&gt;,</span></span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="do">## #   IP2G01A1 &lt;dbl+lbl&gt;, IP1G01AA &lt;dbl+lbl&gt;, IP1G02A &lt;dbl+lbl&gt;, …</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(loaded)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>loaded[[<span class="dv">1</span>]]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 10 × 314</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    IDCNTRY             IDSCHOOL ITLANGC      IP1G00A   IP1G00B      IP1G00C     </span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;dbl+lbl&gt;           &lt;dbl+lb&gt; &lt;dbl+lbl&gt;    &lt;dbl+lbl&gt; &lt;dbl+lbl&gt;    &lt;dbl+lbl&gt;   </span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 784 [United Arab E… 1001     53 [Arabic]  2 [Mid]   3 [March]    9 (NA) [Omi…</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 784 [United Arab E… 1002     53 [Arabic]  1 [Early] 2 [February] 3 [Late]    </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 784 [United Arab E… 1003     53 [Arabic]  1 [Early] 2 [February] 3 [Late]    </span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 784 [United Arab E… 1004      1 [English] 3 [Late]  2 [February] 3 [Late]    </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 784 [United Arab E… 1005     53 [Arabic]  1 [Early] 3 [March]    3 [Late]    </span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 784 [United Arab E… 1006     53 [Arabic]  2 [Mid]   2 [February] 2 [Mid]     </span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 784 [United Arab E… 1007     53 [Arabic]  1 [Early] 3 [March]    3 [Late]    </span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 784 [United Arab E… 1008     53 [Arabic]  1 [Early] 3 [March]    2 [Mid]     </span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 784 [United Arab E… 1009     53 [Arabic]  2 [Mid]   3 [March]    1 [Early]   </span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 784 [United Arab E… 1010     53 [Arabic]  2 [Mid]   6 [June]     3 [Late]    </span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ 308 more variables: IP1G00D &lt;dbl+lbl&gt;, IP1GIAA &lt;dbl+lbl&gt;,</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="do">## #   IP1GIAB &lt;dbl+lbl&gt;, IP1GIAC &lt;dbl+lbl&gt;, IP1GIAD &lt;dbl+lbl&gt;, IP1GIAE &lt;dbl+lbl&gt;,</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="do">## #   IP1GIAF &lt;dbl+lbl&gt;, IP1GIAG &lt;dbl+lbl&gt;, IP1GIBA &lt;dbl+lbl&gt;, IP1GIBB &lt;dbl+lbl&gt;,</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="do">## #   IP1GIBC &lt;dbl+lbl&gt;, IP1GIBD &lt;dbl+lbl&gt;, IP1G01A &lt;dbl+lbl&gt;, IP1G01B &lt;dbl+lbl&gt;,</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="do">## #   IP1G01C1 &lt;dbl+lbl&gt;, IP1G01C2 &lt;dbl+lbl&gt;, IP2G01A1 &lt;dbl+lbl&gt;,</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="do">## #   IP1G01AA &lt;dbl+lbl&gt;, IP1G02A &lt;dbl+lbl&gt;, IP1G02B &lt;dbl+lbl&gt;,</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="do">## #   IP1G02C &lt;dbl+lbl&gt;, IP1G02D &lt;dbl+lbl&gt;, IP1G02E &lt;dbl+lbl&gt;, …</span></span></code></pre></div>
 </div>
 
 

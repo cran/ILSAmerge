@@ -343,68 +343,68 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <p>We can also combine all the steps for preparing ILSA data
 (downloading, merging, combining respondents, and renaming) with the
 function <code>ILSAready()</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;rlii1991&quot;</span>),<span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;rlii1991&quot;</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">ILSAready</span>(<span class="at">study =</span> <span class="st">&quot;RLII&quot;</span>, <span class="at">year =</span> <span class="dv">1991</span>,<span class="at">outputdir =</span> output, <span class="at">agreeLicense =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="do">## By accessing the Data Repository, IDB Analyzer and Data visualizer, you indicate that you agree to the terms and conditions associated with their use. Please read the Disclaimer and License Agreement for full details.</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="do">## 1 files found for RLII 1991.</span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="do">## Visit https://www.iea.nl/data-tools/repository/readingliteracy to know how to use and cite these datasets.9 files detected. Merging into 1 files.</span></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="do">## Merging ASCT1. Type 1 of 1.</span></span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="do">## Merging dataset 1 of 9.</span></span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="do">## Merging dataset 2 of 9.</span></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="do">## Merging dataset 3 of 9.</span></span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="do">## Merging dataset 4 of 9.</span></span>
-<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="do">## Merging dataset 5 of 9.</span></span>
-<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="do">## Merging dataset 6 of 9.</span></span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="do">## Merging dataset 7 of 9.</span></span>
-<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="do">## Merging dataset 8 of 9.</span></span>
-<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="do">## Merging dataset 9 of 9.</span></span>
-<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="do">## Merging ASCT1 took 2 seconds or 0.04 minutes.</span></span>
-<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="do">## Merging took 2 seconds or 0.04 minutes.</span></span>
-<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="do">## 1  ILSAmerge() file(s) found.</span></span>
-<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a><span class="do">## 1  ILSAmerge() file(s) renamed.</span></span>
-<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a><span class="do">## Downloading and preparing data took 3 seconds or 0.06 minutes.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;rlii1991&quot;</span>),<span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;rlii1991&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ILSAready</span>(<span class="at">study =</span> <span class="st">&quot;RLII&quot;</span>, <span class="at">year =</span> <span class="dv">1991</span>,<span class="at">outputdir =</span> output, <span class="at">agreeLicense =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## By accessing the Data Repository, IDB Analyzer and Data visualizer, you indicate that you agree to the terms and conditions associated with their use. Please read the Disclaimer and License Agreement for full details.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 files found for RLII 1991.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Visit https://www.iea.nl/data-tools/repository/readingliteracy to know how to use and cite these datasets.9 files detected. Merging into 1 files.</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging ASCT1. Type 1 of 1.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 1 of 9.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 2 of 9.</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 3 of 9.</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 4 of 9.</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 5 of 9.</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 6 of 9.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 7 of 9.</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 8 of 9.</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 9 of 9.</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging ASCT1 took 2 seconds or 0.04 minutes.</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging took 2 seconds or 0.04 minutes.</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 1  ILSAmerge() file(s) found.</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 1  ILSAmerge() file(s) renamed.</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Downloading and preparing data took 4 seconds or 0.07 minutes.</span></span></code></pre></div>
 <p>Also if data is already downloaded we can use
 <code>ILSAreadylocal()</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;timssadv&quot;</span>),<span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;timssadv&quot;</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/timssadv&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="fu">ILSAreadylocal</span>(<span class="at">inputdir =</span> input, <span class="at">outputdir =</span> output)</span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="do">## 15 files detected. Merging into 3 files.</span></span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="do">## Merging MCGM1. Type 1 of 3.</span></span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="do">## Merging dataset 1 of 5.</span></span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="do">## Merging dataset 2 of 5.</span></span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="do">## Merging dataset 3 of 5.</span></span>
-<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="do">## Merging dataset 4 of 5.</span></span>
-<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="do">## Merging dataset 5 of 5.</span></span>
-<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="do">## Merging MCGM1 took 0 seconds or 0 minutes.</span></span>
-<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="do">## Merging MSAM1. Type 2 of 3.</span></span>
-<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="do">## Merging dataset 1 of 5.</span></span>
-<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="do">## Merging dataset 2 of 5.</span></span>
-<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="do">## Merging dataset 3 of 5.</span></span>
-<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a><span class="do">## Merging dataset 4 of 5.</span></span>
-<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a><span class="do">## Merging dataset 5 of 5.</span></span>
-<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a><span class="do">## Merging MSAM1 took 0 seconds or 0 minutes.</span></span>
-<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a><span class="do">## Merging MSGM1. Type 3 of 3.</span></span>
-<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a><span class="do">## Merging dataset 1 of 5.</span></span>
-<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a><span class="do">## Merging dataset 2 of 5.</span></span>
-<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a><span class="do">## Merging dataset 3 of 5.</span></span>
-<span id="cb2-26"><a href="#cb2-26" tabindex="-1"></a><span class="do">## Merging dataset 4 of 5.</span></span>
-<span id="cb2-27"><a href="#cb2-27" tabindex="-1"></a><span class="do">## Merging dataset 5 of 5.</span></span>
-<span id="cb2-28"><a href="#cb2-28" tabindex="-1"></a><span class="do">## Merging MSGM1 took 0 seconds or 0 minutes.</span></span>
-<span id="cb2-29"><a href="#cb2-29" tabindex="-1"></a><span class="do">## Merging took 0 seconds or 0 minutes.</span></span>
-<span id="cb2-30"><a href="#cb2-30" tabindex="-1"></a><span class="do">## 2  ILSAmerge()/ILSArename() student file(s) found. Combining into 1 file(s).</span></span>
-<span id="cb2-31"><a href="#cb2-31" tabindex="-1"></a><span class="do">## Combining student 1 of 1.</span></span>
-<span id="cb2-32"><a href="#cb2-32" tabindex="-1"></a><span class="do">## Combining students took 0 seconds or 0 minutes.</span></span>
-<span id="cb2-33"><a href="#cb2-33" tabindex="-1"></a><span class="do">## 2  ILSAmerge()/ILSArename() file(s) found. Adding schools to 1 file(s).</span></span>
-<span id="cb2-34"><a href="#cb2-34" tabindex="-1"></a><span class="do">## Combined students found for MSAM1.</span></span>
-<span id="cb2-35"><a href="#cb2-35" tabindex="-1"></a><span class="do">## Adding schools to MSAM1, file 1 of 1.</span></span>
-<span id="cb2-36"><a href="#cb2-36" tabindex="-1"></a><span class="do">## Adding schools took 0 seconds or 0 minutes.</span></span>
-<span id="cb2-37"><a href="#cb2-37" tabindex="-1"></a><span class="do">## 3  ILSAmerge() file(s) found.</span></span>
-<span id="cb2-38"><a href="#cb2-38" tabindex="-1"></a><span class="do">## 3  ILSAmerge() file(s) renamed.</span></span>
-<span id="cb2-39"><a href="#cb2-39" tabindex="-1"></a><span class="do">## Preparing data took 1 seconds or 0.01 minutes.</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;timssadv&quot;</span>),<span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(),<span class="st">&quot;timssadv&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/timssadv&quot;</span>, <span class="at">package =</span> <span class="st">&quot;ILSAmerge&quot;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ILSAreadylocal</span>(<span class="at">inputdir =</span> input, <span class="at">outputdir =</span> output)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 15 files detected. Merging into 3 files.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging MCGM1. Type 1 of 3.</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 1 of 5.</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 2 of 5.</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 3 of 5.</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 4 of 5.</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 5 of 5.</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging MCGM1 took 0 seconds or 0 minutes.</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging MSAM1. Type 2 of 3.</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 1 of 5.</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 2 of 5.</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 3 of 5.</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 4 of 5.</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 5 of 5.</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging MSAM1 took 0 seconds or 0 minutes.</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging MSGM1. Type 3 of 3.</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 1 of 5.</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 2 of 5.</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 3 of 5.</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 4 of 5.</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging dataset 5 of 5.</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging MSGM1 took 0 seconds or 0 minutes.</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="do">## Merging took 0 seconds or 0 minutes.</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  ILSAmerge()/ILSArename() student file(s) found. Combining into 1 file(s).</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Combining student 1 of 1.</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="do">## Combining students took 0 seconds or 0 minutes.</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  ILSAmerge()/ILSArename() file(s) found. Adding schools to 1 file(s).</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="do">## Combined students found for MSAM1.</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="do">## Adding schools to MSAM1, file 1 of 1.</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="do">## Adding schools took 0 seconds or 0 minutes.</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  ILSAmerge() file(s) found.</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  ILSAmerge() file(s) renamed.</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="do">## Preparing data took 1 seconds or 0.02 minutes.</span></span></code></pre></div>
 
 
 
