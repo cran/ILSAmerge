@@ -1,3 +1,14 @@
+# ILSAmerge 1.3.8
+- Solved an issue with `mistoNAs()` when haven was not loaded.
+- Solved an issue for weird behavior of `mistoNAs()` with ICILS 2013.
+- Solved an issue with `ILSAready()` when filetype is not declared.
+- Fixed a bug in `untibble()`.
+- Fixed a bug in `addSchools()`.
+
+### Remaining issues
+- No unzip of PISA and TALIS downloads.
+
+
 # ILSAmerge 1.3.6
 - Added support for TIMSS 2023.
 - Added support for ICILS 2020 Teacher Panel.
@@ -5,8 +16,6 @@
 - Fixed bug in `justload()`.
 - Fixed bug in `readILSA()`.
 
-### Remaining issues
-- No unzip of PISA and TALIS downloads.
 
 # ILSAmerge 1.3.5
 - Fixed an issue for saving 'SPSS' files.
