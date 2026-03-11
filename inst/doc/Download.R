@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
 availableILSA()
 
 ## ----eval = FALSE-------------------------------------------------------------
-# ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir())
+#  ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir())
 
 ## ----eval = TRUE, echo=FALSE--------------------------------------------------
 try(ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir()),silent = TRUE)
@@ -20,14 +20,14 @@ ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
              agreeLicense = TRUE)
 
 ## ----eval = FALSE-------------------------------------------------------------
-# ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
-#              unzip = TRUE)
+#  ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
+#               unzip = TRUE)
 
 ## ----eval = FALSE-------------------------------------------------------------
-# ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
-#              quiet = TRUE, agreeLicense = TRUE)
+#  ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
+#               quiet = TRUE, agreeLicense = TRUE)
 
 ## ----eval=FALSE---------------------------------------------------------------
-# ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
-#              maxtime = 60)
+#  ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
+#               maxtime = 60)
 

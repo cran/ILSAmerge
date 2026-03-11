@@ -1,3 +1,11 @@
+# ILSAmerge 1.4.0
+- Added support for LANA 2023.
+- Added maxtime argument to `ILSAready()`.
+- Added support for ICCS 2022.
+
+### Remaining issues
+- No unzip of PISA and TALIS downloads.
+
 # ILSAmerge 1.3.8
 - Solved an issue with `mistoNAs()` when haven was not loaded.
 - Solved an issue for weird behavior of `mistoNAs()` with ICILS 2013.
@@ -5,8 +13,7 @@
 - Fixed a bug in `untibble()`.
 - Fixed a bug in `addSchools()`.
 
-### Remaining issues
-- No unzip of PISA and TALIS downloads.
+
 
 
 # ILSAmerge 1.3.6
