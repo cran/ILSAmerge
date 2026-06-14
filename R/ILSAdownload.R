@@ -5,6 +5,7 @@
 #' 'ICCS', 'ICILS', 'LANA', 'CIVED', 'REDS', 'RLII', and 'SITES.' Depending on the study, 
 #' you will need to decide which data to download, and
 #' read and accept its terms and conditions to proceed with the download.
+#' Data is retrieved from <https://www.iea.nl>.
 #'
 #' @param study a string indicating the name of the study. For available studies
 #' check the description of this function.
@@ -20,7 +21,7 @@
 # only the main study will be downloaded.
 #' Default is \code{FALSE}.
 #' @param agreeLicense a logical value indicating if you agree with
-#' the Disclaimer and License Agreement file from www.iea.nl. If \code{FALSE},
+#' the Disclaimer and License Agreement file from <https://www.iea.nl>. If \code{FALSE},
 #' you will be prompted to agree with it or else data will not be downloaded.
 #' Default is \code{FALSE}.
 #' 
@@ -51,6 +52,15 @@ ILSAdownload <- function(study, year, outputdir = getwd(),
   # outputdir = tests
   # unzip = TRUE
   
+  hasgh <- checkavailable("github")
+  
+  if(!hasgh){
+    message(paste0("Could not read ILSAlinks file from 'GitHub'.",
+                   "\nPlease be sure that you are connected to the Internet.",
+                   "\nIf you are and this message persists, please contact the mantainer to solve this issue."))
+    return(NULL)
+  }
+  
   # Read external ----
   
   where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
@@ -59,9 +69,14 @@ ILSAdownload <- function(study, year, outputdir = getwd(),
   ILSAlinks <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
   
   if("try-error"%in%class(ILSAlinks)){
-    stop(paste0("Could not read ILSAlinks file from 'GitHub'.",
-                      "\nPlease be sure that you are connected to the Internet.",
-                      "\nIf you are and this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
+    # stop(paste0("Could not read ILSAlinks file from 'GitHub'.",
+    #                   "\nPlease be sure that you are connected to the Internet.",
+    #                   "\nIf you are and this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
+    
+    message(paste0("Could not read ILSAlinks file from 'GitHub'.",
+                "\nPlease be sure that you are connected to the Internet.",
+                "\nIf you are and this message persists, please contact the mantainer to solve this issue."))
+    return(NULL)
   }
   
   
@@ -126,7 +141,7 @@ ILSAdownload <- function(study, year, outputdir = getwd(),
     inst <- "OECD"
   
   
-  if(STUDY%in%c('CIVED', 'ICCS', 'ICILS', 'LANA','PIRLS', 'REDS', 'RLII', 'SITES', 'TIMSS', 'TIMSSADVANCED'))
+  if(STUDY%in%c('CIVED', 'ICCS', 'ICILS', 'LANA','PIRLS', 'REDS', 'RLII', 'SITES', 'TIMSS', 'TIMSSADVANCED','TIMSSLONG'))
     inst <- "IEA"
   
   if(is.null(inst))
@@ -214,7 +229,18 @@ ILSAdownload <- function(study, year, outputdir = getwd(),
   
   ## Download IEA ----
   if(inst=="IEA"){
-    # mainurl <- "https://www.iea.nl/sites/default/files/data-repository"
+    
+    hasiea <- checkavailable("iea")
+    
+    
+    if(!hasiea){
+      message(paste0("Could not read Disclaimer and License Agreement file from www.iea.nl.",
+                     " Please be sure that you are connected to the Internet and that 'maxtime' is high enough.",
+                     " If after that, this message persists, please contact the mantainer to solve this issue."))
+      return(NULL)
+    }
+    
+    
     mainurl <- ""
     agree <- "https://www.iea.nl/sites/default/files/2019-05/Disclaimer%20and%20License%20Agreement.pdf"
     
@@ -236,9 +262,10 @@ ILSAdownload <- function(study, year, outputdir = getwd(),
       if(quiet){
         return(NULL)
       }else{
-        stop(paste0("Could not read Disclaimer and License Agreement file from www.iea.nl.",
+        message(paste0("Could not read Disclaimer and License Agreement file from www.iea.nl.",
                           " Please be sure that you are connected to the Internet and that 'maxtime' is high enough.",
-                          " If after that, this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
+                          " If after that, this message persists, please contact the mantainer to solve this issue."))
+        return(NULL)
       }
       
 
